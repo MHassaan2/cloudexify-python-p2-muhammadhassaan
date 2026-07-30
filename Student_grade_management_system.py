@@ -1,4 +1,5 @@
 import csv
+
 students=[]
 subjects=[
     "Maths",
@@ -7,7 +8,7 @@ subjects=[
     "Urdu",
     "English"
 ]
-
+#---------------------Display Menu---------------------
 def menu_display():
     print("""-------------------------------
 Student Grade Management System
@@ -32,6 +33,7 @@ Student Grade Management System
         except ValueError:
             print("Invalid Input")
 
+#----------------------ID-Generator---------------------
 def id_generator():
     if len(students) == 0:
         return 1
@@ -41,7 +43,7 @@ def id_generator():
             if student['id'] > highest_ID:
                 highest_ID = student['id']
         return highest_ID + 1
-
+#----------------------Add-Student---------------------
 def add_student():
     grades={}
     student_id=id_generator()
@@ -85,6 +87,7 @@ def add_student():
     save_csv()
     print("Student added successfully.")
 
+#----------------------Grade-Letters---------------------
 def grade_letter(grade):
     if grade >= 80:
         return "(A)"
@@ -97,6 +100,7 @@ def grade_letter(grade):
     else:
         return "(F)"
 
+#----------------------View-Student---------------------
 def view_student():
     if not students:
         print("No students found.")
@@ -112,6 +116,7 @@ def view_student():
               f"{student['average']:<10}{grade_letter(student['average']):<10}")
     print("-"*93)
 
+#----------------------Update-Student---------------------
 def update_student():
     print("---------- Update Student ----------")
     view_student()
@@ -165,7 +170,8 @@ def update_student():
             return
     except ValueError:
         print("Invalid Input")
-                        
+
+#----------------------Delete-Student---------------------                    
 def delete_student():
     print("---------- Delete Student ----------")
     view_student()
@@ -175,8 +181,7 @@ def delete_student():
         save_csv()
         print("Student deleted successfully.")
 
-
-
+#----------------------Search-Student---------------------
 def search_student():
     while True:
         try:
@@ -196,7 +201,7 @@ def search_student():
     print("Student not found.")
     return None
     
-
+#----------------------Save_to_CSV---------------------
 def save_csv():
     with open('students.csv','w',newline='') as file:
         writer=csv.writer(file)
@@ -207,6 +212,7 @@ def save_csv():
                  student['average']]
             writer.writerow(row)
 
+#----------------------Load_CSV---------------------
 def load_csv():
     try:
         with open("students.csv", 'r') as file:
@@ -235,6 +241,7 @@ def load_csv():
     except Exception as e:
         print(f'Error occurred while loading data: {e}')
 
+#----------------------Class-Report-and-Ranking---------------------
 def class_report_and_ranking():
     if not students:
         print("No students found.")
@@ -257,7 +264,7 @@ def class_report_and_ranking():
 
 
 
-    
+##----------------------Main-Function---------------------
 def main():
     load_csv()
     while True:
