@@ -171,8 +171,9 @@ python student_grade_management.py
 
 # 📸 Screenshots
 
-Application screenshots are available in the **screenshots** folder.
-
+| 🏠 Add Students | 📊 View Student |
+|---------------|-----------------|
+|![](screen_shots/add_student.png)|![](screen_shots/view_student.png)|
 ---
 
 # 👤 Author
